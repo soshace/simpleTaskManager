@@ -1,0 +1,70 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="close()">
+        <span>&times;</span>
+    </button>
+    <h3 class="modal-title">Add task</h3>
+</div>
+
+<div class="modal-body">
+    <form class="form-vertical">
+        <div class="form-group">
+            <input id="taskTitle" type="text" class="form-control" placeholder="Title of task"
+                   ng-model="task.title" required/>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                    <span class="input-group-addon" id="priceAddon">
+                        $
+                    </span>
+                <input id="taskPrice" type="number" class="form-control" placeholder="Price"
+                       aria-describedby="priceAddon" ng-model="task.price" min="0" required/>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-inline">
+            <label>
+                <h4>
+                    Your balance:
+                </h4>
+            </label>
+            <span class="pull-right">
+                <h4>
+                    {{wallet.balance | currency}}
+                </h4>
+            </span>
+        </div>
+        <div class="form-inline">
+            <label>
+                <h4>
+                    Task price:
+                </h4>
+            </label>
+            <span class="pull-right">
+                <h4>
+                    {{total.price | currency}}
+                </h4>
+            </span>
+        </div>
+        <div class="form-inline">
+            <label>
+                <h4>
+                    Task commission:
+                </h4>
+            </label>
+            <span class="pull-right">
+                <h4>
+                    {{total.commission | currency}}
+                </h4>
+            </span>
+        </div>
+        <div class="form-group" ng-hide="error == null">
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                {{error}}
+            </div>
+        </div>
+        <button type="button" class="btn btn-block btn-lg btn-success" ng-enter="addTask()" ng-click="addTask()">
+            Add task
+        </button>
+    </form>
+</div>

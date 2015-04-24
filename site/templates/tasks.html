@@ -1,0 +1,95 @@
+<ng-include src="'templates/header.html'"></ng-include>
+<div class="container wa-main">
+    <div class="row">
+        <div class="col-md-4 col-md-push-8">
+            <div class="panel panel-default" ng-hide="user == null">
+                <div class="panel-heading">
+                    Account
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        You have
+                        <div class="pull-right">
+                            <b>{{user.wallet.balance | currency}}</b>
+                        </div>
+                    </div>
+                    <div ng-show="user.userType == USER_TYPES_CONST.CUSTOMER">
+                        <hr/>
+                        <div class="form-group">
+                            Blocked
+                            <div class="pull-right">
+                                <b>{{user.wallet.blocked | currency}}</b>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <div class="btn btn-success btn-block" ng-click="addMoney()">
+                                <span class="glyphicon glyphicon-plus-sign"></span>
+                                Add money
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-pull-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    List of opened tasks
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        There you can see list of tasks opened by customers. Only performers can take
+                        this tasks to perform.
+
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th class="vert-align">Task title</th>
+                        <th class="vert-align">Customer</th>
+                        <th class="vert-align">
+                            <span class="pull-right">
+                                Price
+                            </span>
+                        </th>
+                        <th class="vert-align">
+                            <button type="button" class="btn btn-sm btn-default pull-right" ng-click="addTask()"
+                                    ng-show="user.userType == USER_TYPES_CONST.CUSTOMER">
+                                <span class="glyphicon glyphicon-plus-sign"></span>
+                            </button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                    <tr class="animate" ng-repeat="task in tasks">
+                        <td class="vert-align">{{task.title}}</td>
+                        <td class="vert-align">{{task.username}}</td>
+                        <td class="vert-align">
+                            <span class="pull-right">{{task.price | currency}}</span>
+                        </td>
+                        <td class="vert-align">
+                            <button type="button" class="btn btn-sm btn-danger pull-right"
+                                    ng-show="user.userId == task.userId && user.userType == USER_TYPES_CONST.CUSTOMER"
+                                    ng-click="deleteTask(task)">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-success pull-right"
+                                    ng-show="user.userType == USER_TYPES_CONST.PERFORMER"
+                                    ng-click="completeTask(task)">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="padding: 15px">
+                    <button type="button" class="btn btn-default btn-block" ng-show="hasMore" ng-click="loadMore()">Load more...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

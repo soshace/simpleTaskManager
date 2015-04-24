@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+
+    <title>Labor Exchange</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Toaster for notifications -->
+    <link href="assets/css/toaster.min.css" rel="stylesheet"/>
+
+    <!-- Additional css for this app -->
+    <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+
+<div class="wa-page-wrapper">
+    <navbar></navbar>
+
+    <div ui-view></div>
+</div>
+<div class="wa-footer">
+    <div class="container">
+        &copy; GosuGDR 2015
+    </div>
+</div>
+
+<!-- Toaster container -->
+<toaster-container
+        toaster-options="{'time-out': 3000, 'close-button':true, 'position-class': 'toast-bottom-right'}"></toaster-container>
+
+<!-- JQuery lib -->
+<script src="assets/js/libs/jquery.min.js"></script>
+<!-- Angular lib -->
+<script src="assets/js/libs/angular.min.js"></script>
+<!-- NgRouter lib -->
+<script src="assets/js/libs/angular-ui-router.min.js"></script>
+<!-- Ng-Animate lib -->
+<script src="assets/js/libs/angular-animate.min.js"></script>
+<!-- Angular bootstrap lib -->
+<script src="assets/js/libs/ui-bootstrap-tpls-0.12.0.js"></script>
+<!-- Toaster lib -->
+<script src="assets/js/libs/toaster.min.js"></script>
+
+<!-- Additional js for this app -->
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/navbar.js"></script>
+<script src="assets/js/modals.js"></script>
+<script src="assets/js/requests.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
